@@ -98,10 +98,4 @@ $ npm run dev
 
 项目已实现管理员、权限管理、文章、分类、评论等接口，前端模板网站和后台管理系统。自己可以根据项目代码学习，可以到 postman 软件中测试API或学习。
 
-喜欢或对你有帮助的话，请你点一个星星 <strong style='color:red;'>star</strong> 鼓励我，或者您有更好的建议和意见，请提出来告知我，可以留言 [Issues](https://github.com/liangfengbo/nodejs-koa-cake/issues/new)。希望能够帮助到你学习！Thanks！
-
-[MIT](https://github.com/liangfengbo/nodejs-koa-cake/blob/master/LICENSE), by 梁凤波
-
-
-## 项目参考学习资料
-- [《纯正商业级应用－Node.js Koa2开发微信小程序服务端》](https://s.imooc.com/SHHXs2R), by 慕课网：7七月老师
+喜欢或对你有帮助的话，请你点一个星星 <strong style='color:red;'>star</strong> 鼓励我，或者您有更好的建议和意见，请提出来告知我，可以留言 
