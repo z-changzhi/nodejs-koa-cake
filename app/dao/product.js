@@ -41,8 +41,9 @@ class ProductDao {
 
         return res
     }
+    // 创建产品详情-只会在产品创建的时候调用一次
     static async createProductDetail(id) {
-        // 创建产品详情
+
         const productDetail = new ProductDetail();
 
         productDetail.productId = id;

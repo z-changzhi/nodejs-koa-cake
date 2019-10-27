@@ -39,26 +39,6 @@ class ProductDetailDao {
         productDetail.save();
     }
 
-
-
-    //  删除产品详情
-    static async destroyProduct(id) {
-        // 检测是否存在产品详情
-        const product = await Product.findOne({
-            where: {
-                id,
-                deleted_at: null
-            }
-        });
-        // 不存在抛出错误
-        if (!product) {
-            throw new global.errs.NotFound('没有找到相关产品详情');
-        }
-
-        // 软删除产品详情
-        product.destroy()
-    }
-
     //  更新产品详情
     static async updateProduct(id, v) {
         // 查询产品详情
