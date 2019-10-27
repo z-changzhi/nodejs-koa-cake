@@ -1,7 +1,7 @@
 module.exports = {
     environment: 'dev',
     database: {
-        dbName: 'boblog',
+        dbName: 'zcake',
         host: 'localhost',
         port: 3306,
         user: 'root',
@@ -10,7 +10,7 @@ module.exports = {
     security: {
         secretKey: "secretKey",
         // 过期时间 1小时
-        expiresIn: 60 * 60
+        expiresIn: 60 * 60 * 24
     },
     wx: {
         appId: '',
