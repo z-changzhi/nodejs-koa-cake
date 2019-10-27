@@ -2,6 +2,7 @@ const {Sequelize, Op} = require('sequelize')
 
 
 const {Product} = require('../models/product')
+const {ProductDetail} = require('../models/productDetail')
 const {Category} = require('../models/category')
 const {Comments} = require('../models/comments')
 
@@ -35,7 +36,24 @@ class ProductDao {
         product.cover = v.get('body.cover');
         product.category_id = v.get('body.category_id');
 
-        product.save();
+        const res = product.save();
+
+
+        return res
+    }
+    static async createProductDetail(id) {
+        // 创建产品详情
+        const productDetail = new ProductDetail();
+
+        productDetail.productId = id;
+        productDetail.detailTitle = '暂无标题'
+        productDetail.detailDesc = '暂无详情'
+        productDetail.detailLabels = '暂无标签'
+        productDetail.sweetness = 0
+        productDetail.detailImg = ''
+        productDetail.content = '暂无内容'
+
+        productDetail.save();
     }
 
     // 获取产品列表
@@ -169,9 +187,20 @@ class ProductDao {
         if (!product) {
             throw new global.errs.NotFound('没有找到相关产品');
         }
-
+        // 检测是否存在产品详情
+        const productDetail = await ProductDetail.findOne({
+            where: {
+                productId:id,
+                deleted_at: null
+            }
+        });
+        // 不存在抛出错误
+        if (!productDetail) {
+            throw new global.errs.NotFound('没有找到产品详情');
+        }
         // 软删除产品
         product.destroy()
+        productDetail.destroy()
     }
 
     //  更新产品

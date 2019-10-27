@@ -1,13 +1,12 @@
 const Router = require('koa-router');
 
 const {
-    ProductValidator,
+    ProductDetailValidator,
     PositiveIdParamsValidator,
     ProductSearchValidator
-} = require('../../validators/product');
+} = require('../../validators/productDetail');
 
 const {Auth} = require('../../../middlewares/auth');
-const {ProductDao} = require('../../dao/product');
 const {ProductDetailDao} = require('../../dao/productDetail');
 
 const {Resolve} = require('../../lib/helper');
@@ -20,18 +19,15 @@ const router = new Router({
 })
 
 /**
- * 创建商品
+ * 创建商品详情
  */
-router.post('/product', new Auth(AUTH_ADMIN).m, async (ctx) => {
+router.post('/productDetail', new Auth(AUTH_ADMIN).m, async (ctx) => {
 
     // 通过验证器校验参数是否通过
-    const v = await new ProductValidator().validate(ctx);
+    const v = await new ProductDetailValidator().validate(ctx);
 
     // 创建商品
-    const result =  await ProductDao.createProduct(v);
-    await ProductDao.createProductDetail(result.id);
-
-    console.log(result.id);
+    await ProductDetailDao.createProductDetail(v);
     // 返回结果
     ctx.response.status = 200;
     ctx.body = res.success('创建商品成功');
@@ -49,6 +45,7 @@ router.delete('/product/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
     const id = v.get('path.id');
     // 删除产品
     await ProductDao.destroyProduct(id);
+
     ctx.response.status = 200;
     ctx.body = res.success('删除产品成功');
 })
@@ -56,7 +53,7 @@ router.delete('/product/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
 /**
  *  更新产品
  */
-router.put('/product/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
+router.put('/productDetail/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
 
     // 通过验证器校验参数是否通过
     const v = await new PositiveIdParamsValidator().validate(ctx);
@@ -64,7 +61,7 @@ router.put('/product/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
     // 获取产品ID参数
     const id = v.get('path.id');
     // 更新产品
-    await ProductDao.updateProduct(id, v);
+    await ProductDetailDao.updateProduct(id, v);
 
     ctx.response.status = 200;
     ctx.body = res.success('更新产品成功');
@@ -74,21 +71,21 @@ router.put('/product/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
 /**
  *  获取产品列表
  */
-router.get('/product', async (ctx) => {
-    // 获取页码，排序方法，分类ID，搜索关键字
-    const {page, desc, category_id, keyword} = ctx.query;
-    // 查询产品列表
-    const productList = await ProductDao.getProductList(page, desc, category_id, keyword);
-
-    // 返回结果
-    ctx.response.status = 200;
-    ctx.body = res.json(productList);
-});
+// router.get('/product', async (ctx) => {
+//     // 获取页码，排序方法，分类ID，搜索关键字
+//     const {page, desc, category_id, keyword} = ctx.query;
+//     // 查询产品列表
+//     const productList = await ProductDao.getProductList(page, desc, category_id, keyword);
+//
+//     // 返回结果
+//     ctx.response.status = 200;
+//     ctx.body = res.json(productList);
+// });
 
 /**
  * TODO 查询产品详情
  */
-router.get('/product/:id', async (ctx) => {
+router.get('/productDetail/:id', async (ctx) => {
 
     // 通过验证器校验参数是否通过
     const v = await new PositiveIdParamsValidator().validate(ctx);
@@ -96,7 +93,7 @@ router.get('/product/:id', async (ctx) => {
     // 获取产品ID参数
     const id = v.get('path.id');
     // 查询产品
-    const product = await ProductDao.getProductDetail(id);
+    const productDetail = await ProductDetailDao.getProductDetail(id);
 
     // 获取关联此产品的分类详情
     // const category = await CategoryDao.getCategory(product.getDataValue('category_id'));
@@ -111,7 +108,7 @@ router.get('/product/:id', async (ctx) => {
 
     // 返回结果
     ctx.response.status = 200;
-    ctx.body = res.json(product);
+    ctx.body = res.json(productDetail);
 
 })
 
