@@ -8,8 +8,6 @@ const {
 
 const {Auth} = require('../../../middlewares/auth');
 const {ProductDao} = require('../../dao/product');
-const {CategoryDao} = require('../../dao/category');
-const {CommentsDao} = require('../../dao/comments');
 
 const {Resolve} = require('../../lib/helper');
 const res = new Resolve();
@@ -104,7 +102,7 @@ router.get('/product/:id', async (ctx) => {
     // const commentsList = await CommentsDao.getProductComments(id);
 
     // 更新产品浏览
-    await ProductDao.updateProductBrowse(id, ++product.browse);
+    // await ProductDao.updateProductBrowse(id, ++product.browse);
 
     // await product.setDataValue('category_detail', category);
     // await product.setDataValue('comments_list', commentsList);

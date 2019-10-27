@@ -9,10 +9,11 @@ class ProductValidator extends LinValidator {
     constructor() {
         super();
         this.title = [new Rule("isLength", "title不能为空", {min: 1})];
-        this.call = [new Rule("isLength", "call不能为空", {min: 1})];
-        this.cover = [new Rule("isLength", "cover不能为空", {min: 1})];
         this.desc = [new Rule("isLength", "desc不能为空", {min: 1})];
+        this.labels = [new Rule("isLength", "labels不能为空", {min: 1})];
         this.price = [new Rule("isLength", "price不能为空", {min: 1})];
+        this.scales = [new Rule("isLength", "scales不能为空", {min: 1})];
+        this.cover = [new Rule("isLength", "cover不能为空", {min: 1})];
         this.category_id = [new Rule("isLength", "category_id不能为空", {min: 1})];
     }
 

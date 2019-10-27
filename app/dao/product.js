@@ -28,11 +28,11 @@ class ProductDao {
         const product = new Product();
 
         product.title = v.get('body.title');
-        product.call = v.get('body.call');
         product.desc = v.get('body.desc');
-        product.cover = v.get('body.cover');
+        product.labels = v.get('body.labels');
         product.price = v.get('body.price');
-        product.browse = v.get('body.browse');
+        product.scales = v.get('body.scales');
+        product.cover = v.get('body.cover');
         product.category_id = v.get('body.category_id');
 
         product.save();
@@ -183,19 +183,20 @@ class ProductDao {
         }
 
         // 更新产品
+
         product.title = v.get('body.title');
-        product.call = v.get('body.call');
         product.desc = v.get('body.desc');
-        product.cover = v.get('body.cover');
+        product.labels = v.get('body.labels');
         product.price = v.get('body.price');
-        product.browse = v.get('body.browse');
+        product.scales = v.get('body.scales');
+        product.cover = v.get('body.cover');
         product.category_id = v.get('body.category_id');
 
         product.save();
     }
 
     // 更新产品浏览次数
-    static async updateProductBrowse(id, browse) {
+    /*static async updateProductBrowse(id, browse) {
         // 查询产品
         const product = await Product.findByPk(id);
         if (!product) {
@@ -205,9 +206,9 @@ class ProductDao {
         product.browse = browse;
 
         product.save();
-    }
+    }*/
 
-    // 产品详情
+    // 产品详情 - 用作数据 回显
     static async getProductDetail(id) {
         const product = await Product.findOne({
             where: {
