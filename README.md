@@ -4,6 +4,12 @@
 
 使用 Node.js + Koa2 + MySQL + Vue.js 本源码纯属学习临摹，请勿用于商业用途，如拿去非法使用与本人无关。正版地址：[https://www.21cake.com/](https://www.21cake.com/)
 
+## 临摹地址
+cms：https://cms.z-changzhi.cn
+
+Pc端：https://m.z-changzhi.cn
+
+
 ## 项目主要功能
 
 [![koa](https://img.shields.io/badge/koa-%5E2.7.0-brightgreen.svg) ](https://www.npmjs.com/package/koa)
@@ -89,10 +95,9 @@ $ npm run dev
 ### 接口说明（重要）
 项目的所有接口文档都这里，可以逐个文档看。
 - [管理员接口文档说明](./doc/admin.md)
-- [产品接口文档说明](./doc/article.md)
 - [产品分类接口文档说明](./doc/category.md)
-- [产品详情接口文档说明](./doc/category.md)
-- [产品评论接口文档说明](./doc/comments.md)
+- [产品接口文档说明](./doc/product.md)
+- [产品详情接口文档说明](./doc/productDetail.md)
 
 ## License
 
