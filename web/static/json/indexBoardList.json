@@ -1,0 +1,32 @@
+[
+    {
+        "title": "新品",
+        "id": "newProduct",
+        "toKey": "analysis",
+        "saleout": false
+    },
+    {
+        "title": "生日",
+        "id": "birthday",
+        "toKey": "count",
+        "saleout": false
+    },
+    {
+        "title": "儿童",
+        "id": "children",
+        "toKey": "forecast",
+        "saleout": true
+    },
+    {
+        "title": "聚会",
+        "id": "party",
+        "toKey": "publish",
+        "saleout": false
+    },
+    {
+        "title": "活动专区",
+        "id": "activity",
+        "toKey": "publish",
+        "saleout": false
+    }
+]

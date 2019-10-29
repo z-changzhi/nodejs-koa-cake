@@ -1,0 +1,181 @@
+{
+    "productList": {
+        "newProduct": {
+            "title": "新品",
+            "vice_title": "专区",
+            "imgcover_1": "https://m.z-changzhi.cn/static/images/1_1.jpg",
+            "goods": [
+                {
+                    "goodsId": 1,
+                    "id": 1,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/1_2.png",
+                    "title": "米道",
+                    "desc": "天真、天然，这是这款蛋糕唯一的出发点",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "454",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 2,
+                    "id": 2,
+                    "price": 268,
+                    "cover": "https://m.z-changzhi.cn/static/images/1_3.png",
+                    "title": "中秋坚果慕斯",
+                    "desc": "月光如果可以凝固，一定是芝士慕斯的味道",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "268.00",
+                    "specW": "454",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 3,
+                    "id": 3,
+                    "price": 398,
+                    "cover": "https://m.z-changzhi.cn/static/images/1_4.png",
+                    "title": "3天慕斯月饼",
+                    "desc": "3天，即一生。",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "398.00",
+                    "specW": "420",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 4,
+                    "id": 4,
+                    "price": 454,
+                    "cover": "https://m.z-changzhi.cn/static/images/1_5.png",
+                    "title": "浅草",
+                    "desc": "浅草才能没马蹄",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "454",
+                    "remarks": "1.0磅"
+                }
+            ]
+        },
+        "birthday": {
+            "title": "生日",
+            "vice_title": "专区",
+            "imgcover_1": "https://m.z-changzhi.cn/static/images/2_1.jpg",
+            "goods": [
+                {
+                    "goodsId": 5,
+                    "id": 5,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/2_2.png",
+                    "title": "百利甜情人",
+                    "desc": "新切的水果与刚折的玫瑰，甜美、渐浓",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 6,
+                    "id": 6,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/2_3.png",
+                    "title": "榴莲飘飘",
+                    "desc": "丰厚乳脂奶油，打入足量榴莲果肉",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 7,
+                    "id": 7,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/2_4.png",
+                    "title": "黑白巧克力慕斯 彼尔德（HBD）",
+                    "desc": "卡通定制撒粉，简单、柔软",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 8,
+                    "id": 8,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/2_5.png",
+                    "title": "枣儿",
+                    "desc": "红枣奶油戚风，与姜撞奶慕斯",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "2.0磅"
+                }
+            ]
+        },
+        "children": {
+            "title": "儿童",
+            "vice_title": "专区",
+            "imgcover_1": "https://m.z-changzhi.cn/static/images/3_1.jpg",
+            "goods": [
+                {
+                    "goodsId": 9,
+                    "id": 9,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/3_2.png",
+                    "title": "6口味切块",
+                    "desc": "新切的水果与刚折的玫瑰，甜美、渐浓",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 10,
+                    "id": 10,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/3_3.png",
+                    "title": "黑白巧克力慕斯",
+                    "desc": "丰厚乳脂奶油，打入足量榴莲果肉",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 11,
+                    "id": 11,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/3_4.png",
+                    "title": "清香柠檬与乳酪夹心，微苦",
+                    "desc": "卡通定制撒粉，简单、柔软",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "1.0磅"
+                },
+                {
+                    "goodsId": 12,
+                    "id": 12,
+                    "price": 298,
+                    "cover": "https://m.z-changzhi.cn/static/images/3_5.png",
+                    "title": "马斯卡彭慕斯",
+                    "desc": "马斯卡彭慕斯，叠加法国软芝士",
+                    "labels": "儿童,生日,人气",
+                    "scales": "1,2",
+                    "specM": "298.00",
+                    "specW": "908",
+                    "remarks": "2.0磅"
+                }
+            ]
+        }
+    }
+}
