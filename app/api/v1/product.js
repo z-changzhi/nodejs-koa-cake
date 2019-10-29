@@ -80,6 +80,7 @@ router.get('/product', async (ctx) => {
     // 查询产品列表
     const productList = await ProductDao.getProductList(page, desc, category_id, keyword);
 
+    console.log(productList);
     // 返回结果
     ctx.response.status = 200;
     ctx.body = res.json(productList);

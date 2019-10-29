@@ -1,0 +1,15 @@
+{
+  "apps": {
+    "name": "pm2-test-server", // 起个进程名，即AppName
+    "script": "app.js",  // 启动的入口文件（koa2项目中为/bin/www.js）
+    "watch": true,      // 监听文件变化，自动重启
+    "ignore_watch": [   // 不需要监听的文件
+      "node_modules",
+      "logs"
+    ],
+    "instances": 2,   // 设置多进程
+    "error_file": "logs/err.log",  // 错误日志存储的文件
+    "out_file": "logs/out.log",    // console.log()打印的都会放进去
+    "log_date_format": "YYYY-MM-DD HH:mm:ss" // 给每行日志标记一个时间
+  }
+}

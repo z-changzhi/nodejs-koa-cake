@@ -1,6 +1,6 @@
 const {Category} = require('../models/category')
-const {Article} = require('../models/article')
-const {ArticleDao} = require('../dao/article')
+const {Product} = require('../models/product')
+const {ProductDao} = require('../dao/product')
 const {Sequelize, Op} = require('sequelize')
 
 class CategoryDao {
@@ -79,24 +79,24 @@ class CategoryDao {
             }
         });
 
-        // 统计每个分类下有多少文章
+        // 统计每个分类下有多个产品
         const ids = [];
         category.forEach(item => {
             ids.push(item.id);
         });
-        const article = await CategoryDao._getArticle(ids);
+        const product = await CategoryDao._getProduct(ids);
 
         category.forEach(item => {
-            CategoryDao._setArticle(item, article)
+            CategoryDao._setProduct(item, product)
         })
 
         return category;
 
     }
 
-    // 获取每个分类下有多少文章
-    static async _getArticle(ids) {
-        return await Article.scope('bh').findAll({
+    // 获取每个分类下有多个产品
+    static async _getProduct(ids) {
+        return await Product.scope('bh').findAll({
             where: {
                 category_id: {
                     [Op.in]: ids
@@ -107,24 +107,24 @@ class CategoryDao {
         })
     }
 
-    // 设置每个分类下的文章总数
-    static _setArticle(category, article) {
+    // 设置每个分类下个产品总数
+    static _setProduct(category, product) {
         let count = 0;
-        article.forEach(item => {
+        product.forEach(item => {
             if (parseInt(category.id) === parseInt(item.category_id)) {
                 count = item.get('count')
             }
         })
-        category.setDataValue('article_nums', count);
+        category.setDataValue('product_nums', count);
 
         return category
     }
 
-    // 获取一个分类下的文章
-    static async getCategoryArticle(category_id, page = 1, desc = 'created_at') {
+    // 获取一个分类下个产品
+    static async getCategoryProduct(category_id, page = 1, desc = 'created_at') {
         const pageSize = 10;
 
-        const article = await Article.scope('iv').findAndCountAll({
+        const product = await Product.scope('iv').findAndCountAll({
             limit: pageSize,//每页10条
             offset: (page - 1) * pageSize,
             where: {
@@ -137,25 +137,19 @@ class CategoryDao {
         });
 
         const categoryIds = [];
-        const articleIds = [];
+        const productIds = [];
 
-        const r = article.rows;
-        r.forEach(article => {
-            articleIds.push(article.id);
-            categoryIds.push(article.category_id);
+        const r = product.rows;
+        r.forEach(product => {
+            productIds.push(product.id);
+            categoryIds.push(product.category_id);
         });
 
 
-        // // 获取每篇文章评论
-        const comments = await ArticleDao._getArticleComments(articleIds);
-        r.forEach(article => {
-            ArticleDao._setArticleComments(article, comments)
-        });
-
-        // 获取每篇文章分类详情
-        const category = await ArticleDao._getArticleCategoryDetail(categoryIds);
-        r.forEach(article => {
-            ArticleDao._setArticleCategoryDetail(article, category)
+        // 获取每个产品分类详情
+        const category = await ProductDao._getProductCategoryDetail(categoryIds);
+        r.forEach(product => {
+            ProductDao._setProductCategoryDetail(product, category)
         });
 
         return {
@@ -164,9 +158,9 @@ class CategoryDao {
             meta: {
                 current_page: parseInt(page),
                 per_page: 10,
-                count: article.count,
-                total: article.count,
-                total_pages: Math.ceil(article.count / 10),
+                count: product.count,
+                total: product.count,
+                total_pages: Math.ceil(product.count / 10),
             }
         };
     }

@@ -93,7 +93,7 @@ router.get('/productDetail/:id', async (ctx) => {
     // 获取产品ID参数
     const id = v.get('path.id');
     // 查询产品
-    const productDetail = await ProductDetailDao.getProductDetail(id);
+    const productDetail = await ProductDetailDao.getProductDetailData(id);
 
     // 获取关联此产品的分类详情
     // const category = await CategoryDao.getCategory(product.getDataValue('category_id'));

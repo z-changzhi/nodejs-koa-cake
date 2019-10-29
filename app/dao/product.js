@@ -1,10 +1,8 @@
-const {Sequelize, Op} = require('sequelize')
+const {Op} = require('sequelize')
 
-
+const {Category} = require('../models/category')
 const {Product} = require('../models/product')
 const {ProductDetail} = require('../models/productDetail')
-const {Category} = require('../models/category')
-const {Comments} = require('../models/comments')
 
 // 定义产品模型
 class ProductDao {
@@ -89,30 +87,15 @@ class ProductDao {
         const categoryIds = [];
         const productIds = [];
         const r = product.rows;
-
-        /*
-
-                r.forEach(product => {
-                    productIds.push(product.id);
-                    categoryIds.push(product.category_id);
-                });
-        */
-
-
-        // // 获取每篇产品评论
-        /*
-        const comments = await ProductDao._getProductComments(productIds);
-        r.forEach(product => {
-            ProductDao._setProductComments(product, comments)
+        /*// 将labels 变成数组返回
+        r.forEach(res => {
+            res.labels = res.labels.split(",");
         });
-        */
+        // 将 scales 变成数组返回
+        r.forEach(res => {
+            res.scales = res.scales.split(",");
+        });*/
 
-        // 获取每篇产品分类详情
-        /*const category = await ProductDao._getProductCategoryDetail(categoryIds);
-        r.forEach(product => {
-            ProductDao._setProductCategoryDetail(product, category)
-        });
-*/
         return {
             data: r,
             // 分页
@@ -126,34 +109,8 @@ class ProductDao {
         };
     }
 
-    // 获取每篇产品评论
-    static async _getArticleComments(articleIds) {
-        return await Comments.scope('bh').findAll({
-            where: {
-                article_id: {
-                    [Op.in]: articleIds
-                }
-            },
-            group: ['article_id'],
-            attributes: ['article_id', [Sequelize.fn('COUNT', '*'), 'count']]
-        })
-    }
-
-    // 设置每章产品评论总数
-    static _setArticleComments(article, comments) {
-        let count = 0;
-        comments.forEach(item => {
-            if (parseInt(article.id) === parseInt(item.article_id)) {
-                count = item.get('count')
-            }
-        })
-        article.setDataValue('comments_nums', count);
-
-        return article
-    }
-
-    // 获取每篇产品分类详情
-    static async _getArticleCategoryDetail(categoryIds) {
+    // 获取每个产品分类详情
+    static async _getProductCategoryDetail(categoryIds) {
         return await Category.scope('bh').findAll({
             where: {
                 id: {
@@ -162,19 +119,16 @@ class ProductDao {
             }
         })
     }
-
     // 设置每章产品分类详情
-    static _setArticleCategoryDetail(article, category) {
+    static _setProductCategoryDetail(product, category) {
         category.forEach(item => {
-            if (parseInt(article.category_id) === parseInt(item.id)) {
-                article.setDataValue('category_detail', item);
+            if (parseInt(product.category_id) === parseInt(item.id)) {
+                product.setDataValue('category_detail', item);
             }
         })
 
-        return article
+        return product
     }
-
-
     //  删除产品
     static async destroyProduct(id) {
         // 检测是否存在产品
@@ -271,26 +225,9 @@ class ProductDao {
             ]
         });
 
-        const categoryIds = [];
-        const articleIds = [];
 
         const r = product.rows;
-/*        r.forEach(article => {
-            articleIds.push(article.id);
-            categoryIds.push(article.category_id);
-        });
 
-        // 获取每篇产品评论
-        const comments = await ArticleDao._getArticleComments(articleIds);
-        r.forEach(article => {
-            ArticleDao._setArticleComments(article, comments)
-        });
-
-        // 获取每篇产品分类详情
-        const category = await ArticleDao._getArticleCategoryDetail(categoryIds);
-        r.forEach(article => {
-            ArticleDao._setArticleCategoryDetail(article, category)
-        });*/
 
         return {
             data: r,

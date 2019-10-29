@@ -34,7 +34,7 @@ router.post('/category', new Auth(AUTH_ADMIN).m, async (ctx) => {
 
 
 /**
- * 删除文章
+ * 删除产品
  */
 router.delete('/category/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
 
@@ -74,7 +74,7 @@ router.put('/category/:id', new Auth(AUTH_ADMIN).m, async (ctx) => {
  */
 router.get('/category', async (ctx) => {
 
-    // 获取分类下关联的文章
+    // 获取分类下关联的产品
     const categoryList = await CategoryDao.getCategoryList();
 
     // 返回结果
@@ -101,9 +101,9 @@ router.get('/category/:id', async (ctx) => {
 })
 
 /**
- * 获取一个分类下的文章
+ * 获取一个分类下的产品
  */
-router.get('/category/:id/article', async (ctx) => {
+router.get('/category/:id/product', async (ctx) => {
 
     // 通过验证器校验参数是否通过
     const v = await new PositiveIdParamsValidator().validate(ctx);
@@ -115,7 +115,7 @@ router.get('/category/:id/article', async (ctx) => {
     // 排序
     const desc = v.get('query.desc');
     // 获取分类
-    const category = await CategoryDao.getCategoryArticle(category_id, page, desc);
+    const category = await CategoryDao.getCategoryProduct(category_id, page, desc);
 
     // 返回结果
     ctx.response.status = 200;
