@@ -2,7 +2,7 @@
 
 ## 项目介绍
 
-使用 Node.js + Koa2 + MySQL + Vue.js 本源码纯属学习临摹，请勿用于商业用途，如拿去非法使用与本人无关。正版地址：[https://www.21cake.com/](https://www.21cake.com/)
+使用 Node.js + Koa2 + MySQL + Vue.js 本源码纯属学习临摹！属学习临摹！属学习临摹！正版地址：[https://www.21cake.com/](https://www.21cake.com/)
 
 ## 临摹地址
 cms：https://cms.z-changzhi.cn
